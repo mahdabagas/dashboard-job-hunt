@@ -1,4 +1,6 @@
+"use client";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import React from "react";
 import {
   AiOutlineCalendar,
@@ -13,6 +15,7 @@ import { HiOutlineClipboardList } from "react-icons/hi";
 interface Sidebar {}
 
 const Sidebar = ({}) => {
+  const router = useRouter();
   return (
     <div className="pb-12 min-h-screen">
       <div className="space-y-4 py-4">
@@ -22,6 +25,7 @@ const Sidebar = ({}) => {
             <Button
               variant={"ghost"}
               className="w-full justify-start rounded-none hover:text-primary"
+              onClick={() => router.push("/")}
             >
               <AiOutlineHome className="mr-2 text-lg" />
               Home
@@ -50,6 +54,7 @@ const Sidebar = ({}) => {
             <Button
               variant={"ghost"}
               className="w-full justify-start rounded-none hover:text-primary"
+              onClick={() => router.push("job-listings")}
             >
               <HiOutlineClipboardList className="mr-2 text-lg" />
               Job Listings
