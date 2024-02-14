@@ -37,11 +37,12 @@ const JobListingsPage: FC<JobListingsPagerops> = ({}) => {
                 <TableCell>
                   <Badge>{item.status}</Badge>
                 </TableCell>
-                <TableCell>{item.duePosted}</TableCell>
+                <TableCell>{item.datePosted}</TableCell>
                 <TableCell>{item.dueDate}</TableCell>
                 <TableCell>
                   <Badge variant="outline">{item.jobType}</Badge>
                 </TableCell>
+                <TableCell>{item.applicants}</TableCell>
                 <TableCell>
                   {item.applicants} / {item.needs}
                 </TableCell>
