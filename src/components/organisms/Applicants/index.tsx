@@ -28,7 +28,7 @@ const Applicants: FC<ApplicantsProps> = () => {
           {JOB_APPLICANT_DATA.map((item: any, i: number) => (
             <TableRow key={item.name + i}>
               <TableCell>{item.name}</TableCell>
-              <TableCell>{item.applicants}</TableCell>
+              <TableCell>{item.appliedDate}</TableCell>
               <TableCell>
                 <ButtonActionTable url="" />
               </TableCell>

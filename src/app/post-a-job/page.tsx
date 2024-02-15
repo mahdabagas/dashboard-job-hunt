@@ -111,7 +111,7 @@ const PostJobPage = (props: Props) => {
                     >
                       {JOBTYPES.map((item: string, i: number) => {
                         return (
-                          <FormItem className="flex items-center space-x-3 space-y-0">
+                          <FormItem key={i} className="flex items-center space-x-3 space-y-0">
                             <FormControl>
                               <RadioGroupItem value={item} />
                             </FormControl>
