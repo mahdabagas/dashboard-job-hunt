@@ -11,8 +11,8 @@ export const jobFormSchema = z.object({
   salaryFrom: z.string({ required_error: "Salary From is required" }),
   salaryTo: z.string({ required_error: "Salary To is required" }),
   categoryId: z.string({ required_error: "You need to select a category" }),
-  requiredSkill: z
-    .string()
+  requiredSkills: z
+    .string({ required_error: "Required Skill is required" })
     .array()
     .nonempty({ message: "Required Skill must be at least 1 skill" }),
   jobDescription: z
@@ -47,7 +47,7 @@ export const overviewFormSchema = z.object({
   industry: z.string({ required_error: "Industry is required" }),
   dateFounded: z.date({ required_error: "dateFounded is required" }),
   techStack: z
-    .string()
+    .string({ required_error: "techStack is required" })
     .array()
     .nonempty({ message: "Tech Stack must be at least 1 data" }),
   description: z.string({ required_error: "Description is required" }),

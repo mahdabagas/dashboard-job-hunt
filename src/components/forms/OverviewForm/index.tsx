@@ -2,7 +2,9 @@
 
 import CustomUpload from "@/components/CustomUpload";
 import TitleForm from "@/components/atoms/TitleForm";
+import CKEditor from "@/components/organisms/CKEditor";
 import FieldInput from "@/components/organisms/FieldInput";
+import InputSkills from "@/components/organisms/InputSkills";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -34,13 +36,15 @@ import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 interface OverviewFormProps {}
 
 const OverviewForm: FC<OverviewFormProps> = ({}) => {
+  const [editorLoaded, setEditorLoaded] = useState<boolean>(false);
+
   const form = useForm<z.infer<typeof overviewFormSchema>>({
     resolver: zodResolver(overviewFormSchema),
   });
@@ -48,6 +52,10 @@ const OverviewForm: FC<OverviewFormProps> = ({}) => {
   const onSubmit = (val: z.infer<typeof overviewFormSchema>) => {
     console.log(val);
   };
+
+  useEffect(() => {
+    setEditorLoaded(() => true);
+  }, []);
 
   return (
     <div>
@@ -91,6 +99,7 @@ const OverviewForm: FC<OverviewFormProps> = ({}) => {
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
                 name="website"
@@ -239,8 +248,29 @@ const OverviewForm: FC<OverviewFormProps> = ({}) => {
                   </FormItem>
                 )}
               />
+
+              <InputSkills
+                form={form}
+                name="techStack"
+                label="Add Tech Stack"
+              />
             </div>
           </FieldInput>
+
+          <FieldInput
+            title="About Company"
+            subtitle="Brief description for your company. URLs are hyperlinked"
+          >
+            <CKEditor
+              form={form}
+              name="description"
+              editorLoaded={editorLoaded}
+            />
+          </FieldInput>
+
+          <div className=" flex justify-end">
+            <Button size="lg">Save Changes</Button>
+          </div>
         </form>
       </Form>
     </div>

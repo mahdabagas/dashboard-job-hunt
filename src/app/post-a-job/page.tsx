@@ -39,7 +39,7 @@ const PostJobPage = (props: Props) => {
   const form = useForm<z.infer<typeof jobFormSchema>>({
     resolver: zodResolver(jobFormSchema),
     defaultValues: {
-      requiredSkill: [],
+      requiredSkills: [],
     },
   });
 
@@ -111,7 +111,10 @@ const PostJobPage = (props: Props) => {
                     >
                       {JOBTYPES.map((item: string, i: number) => {
                         return (
-                          <FormItem key={i} className="flex items-center space-x-3 space-y-0">
+                          <FormItem
+                            key={i}
+                            className="flex items-center space-x-3 space-y-0"
+                          >
                             <FormControl>
                               <RadioGroupItem value={item} />
                             </FormControl>
@@ -205,7 +208,7 @@ const PostJobPage = (props: Props) => {
             title="Rrequired Skills"
             subtitle="Add Required skills for the job"
           >
-            <InputSkills form={form} />
+            <InputSkills form={form} name="requiredSkills" label="Add Skills" />
           </FieldInput>
 
           <FieldInput
