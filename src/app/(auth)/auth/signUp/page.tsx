@@ -9,10 +9,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 import { signUpFormSchema } from "@/lib/form-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Metadata } from "next";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -20,12 +21,32 @@ import { z } from "zod";
 interface SignUpPageProps {}
 
 const SignUpPage: FC<SignUpPageProps> = ({}) => {
+  const router = useRouter();
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof signUpFormSchema>>({
     resolver: zodResolver(signUpFormSchema),
   });
 
-  const onSubmit = (val: z.infer<typeof signUpFormSchema>) => {
-    console.log(val);
+  const onSubmit = async (val: z.infer<typeof signUpFormSchema>) => {
+    try {
+      await fetch("/api/company/new-user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(val),
+      });
+
+      await router.push("/auth/signIn");
+    } catch (error) {
+      {
+        toast({
+          title: "Erorr",
+          description: "Please Try Again",
+        });
+
+        console.log(error);
+      }
+    }
   };
 
   return (
