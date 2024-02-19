@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import {
@@ -81,6 +82,7 @@ const Sidebar = ({}) => {
             Settings
           </Button>
           <Button
+            onClick={() => signOut()}
             variant={"ghost"}
             className="w-full text-red-500 justify-start rounded-none hover:bg-red-200 hover:text-red-500"
           >
