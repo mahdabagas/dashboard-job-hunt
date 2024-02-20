@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Input } from "../ui/input";
+import { supabaseGetPublicUrl } from "@/lib/supabase";
 
 interface CustomUploadeProps {
   form: any;
@@ -25,19 +26,19 @@ export default function CustomUpload({ form, name }: CustomUploadeProps) {
     inputRef.current?.click();
   };
 
-  //   useEffect(() => {
-  //     async function getImage() {
-  //       const urlImg = await supabaseGetPublickURL(
-  //         form.getValues(name),
-  //         "company"
-  //       );
-  //       setPreviewImg(urlImg);
-  //     }
+  useEffect(() => {
+    async function getImage() {
+      const { publicUrl } = await supabaseGetPublicUrl(
+        form.getValues(name),
+        "company"
+      );
+      setPreviewImg(publicUrl);
+    }
 
-  //     if (form.getValues(name) !== "") {
-  //       getImage();
-  //     }
-  //   }, []);
+    if (form.getValues(name) !== "") {
+      getImage();
+    }
+  }, []);
   return (
     <div className="inline-flex items-center gap-8">
       <div>

@@ -42,13 +42,13 @@ export default async function RootLayout({
                     <div className="px-6 py-6 lg:px-8">
                       <Header />
                       {children}
-                      <Toaster />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </NextAuthProvider>
+          <Toaster />
         </main>
       </body>
     </html>

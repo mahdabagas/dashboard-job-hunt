@@ -1,7 +1,4 @@
-import { jobFormSchema } from "@/lib/form-schema";
-import { FC, useRef, useState } from "react";
-import { UseFormReturn } from "react-hook-form";
-import { z } from "zod";
+import { FC, useEffect, useRef, useState } from "react";
 import {
   FormControl,
   FormField,
@@ -45,6 +42,14 @@ const InputSkills: FC<InputSkillsProps> = ({ form, name, label }) => {
     setValues(skills);
     form.setValue(name, skills);
   };
+
+  useEffect(() => {
+    const val = form.getValues(name);
+
+    if (val && val.length > 0) {
+      setValues(val);
+    }
+  }, [form, name]);
 
   return (
     <FormField
