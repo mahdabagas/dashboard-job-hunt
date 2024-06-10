@@ -14,6 +14,8 @@ interface JobDetailPageProps {
   params: paramsType;
 }
 
+export const revalidate = 0;
+
 async function getDetailJob(id: string) {
   const job = await prisma.job.findFirst({
     where: {
@@ -34,10 +36,6 @@ async function getDetailJob(id: string) {
 
 const JobDetailPage: FC<JobDetailPageProps> = async ({ params }) => {
   const job = await getDetailJob(params.id);
-
-  console.log(job?.applicants);
-
-  console.log(job);
 
   return (
     <div>

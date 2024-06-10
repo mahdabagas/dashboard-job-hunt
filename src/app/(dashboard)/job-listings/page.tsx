@@ -20,6 +20,8 @@ import moment from "moment";
 
 interface JobListingsPagerops {}
 
+export const revalidate = 0;
+
 async function getDataJobs() {
   const session = await getServerSession(authOptions);
 
