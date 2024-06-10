@@ -96,7 +96,6 @@ const PostJobPage: FC<PostJobPageProps> = () => {
         description: "Please try again",
       });
 
-      console.log(error);
     }
   };
 

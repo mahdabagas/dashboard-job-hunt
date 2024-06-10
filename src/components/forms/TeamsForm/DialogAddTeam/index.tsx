@@ -66,7 +66,6 @@ const DialogAddTeam: FC<DialogAddTeamProps> = ({}) => {
         description: "Please try again",
       });
 
-      console.log(error);
     }
   };
 

@@ -113,7 +113,6 @@ const OverviewForm: FC<OverviewFormProps> = ({ detail }) => {
         description: "Plesae try again",
       });
 
-      console.log(error);
     }
   };
 
@@ -257,7 +256,7 @@ const OverviewForm: FC<OverviewFormProps> = ({ detail }) => {
                         </FormControl>
                         <SelectContent>
                           {data?.map((item: Industry) => (
-                            <SelectItem key={item.id} value={item.id}>
+                            <SelectItem key={item.id} value={item.name}>
                               {item.name}
                             </SelectItem>
                           ))}

@@ -67,7 +67,6 @@ const SocialMediaForm: FC<SocialMediaFormProps> = ({ detail }) => {
         description: "Please try again",
       });
 
-      console.log(error);
     }
   };
 

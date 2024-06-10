@@ -14,7 +14,6 @@ interface ApplicantsProps {
 }
 
 const Applicants: FC<ApplicantsProps> = ({ applicants }) => {
-  console.log(applicants);
   return (
     <div>
       <Table>

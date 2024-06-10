@@ -44,7 +44,6 @@ const SignUpPage: FC<SignUpPageProps> = ({}) => {
           description: "Please Try Again",
         });
 
-        console.log(error);
       }
     }
   };

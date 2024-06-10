@@ -1,4 +1,3 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import OverviewForm from "@/components/forms/OverviewForm";
 import SocialMediaForm from "@/components/forms/SocialMediaForm";
 import TeamsForm from "@/components/forms/TeamsForm";
@@ -6,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getServerSession } from "next-auth";
 import { FC } from "react";
 import prisma from "../../../../lib/prisma";
+import { authOptions } from "@/lib/authOptions";
 
 interface SettingsPageProps {}
 
@@ -30,8 +30,6 @@ async function getDetailCompany() {
 
 const SettingsPage: FC<SettingsPageProps> = async ({}) => {
   const company = await getDetailCompany();
-
-  console.log(company);
 
   return (
     <div>
